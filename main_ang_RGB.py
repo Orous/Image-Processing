@@ -9,8 +9,6 @@ import os
 """ Insert Inputs: 
     1- Location of the Image 2- Height and Width of the rectangle in real life """ 
         
-path = 'September 21'
-clock = '9'
 
 
 
@@ -23,7 +21,7 @@ path_save = 'Results'
 
 h_rct = 180 
 w_rct = 226
-Filename = os.path.join(Folder1, Folder2, path, clock, image_name)  
+Filename = os.path.join(Folder1, Folder2, image_name)  
 image_bgr = cv2.imread(Filename) 
 image = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
 
@@ -198,7 +196,7 @@ ax2.set_yticks([0, int((h_dst-1)/2), h_dst-1])
 ax2.set_title('Unwarped Image')
 # plt.show()
 image_name2 = 'Ang Corr RGB.png'
-onja = os.path.join(Folder1, path_save, path, clock, image_name2) 
+onja = os.path.join(Folder1, path_save, image_name2) 
 plt.savefig(onja,dpi=300)
 
 ## The main outputs from these lines are: unwarp_img_rgb, H
@@ -209,7 +207,7 @@ plt.savefig(onja,dpi=300)
     it's better to save as BGR, But, if you want to use the image immidiately after angel correction
     and you need the image pixel values, use RGB one to see the RGB values"""
 unwarp_img_bgr = cv2.cvtColor(unwarp_img_rgb, cv2.COLOR_RGB2BGR)  # Convert to BGR for saving the image
-Filename_save1 = os.path.join(Folder1, path_save, path, clock, image_name) 
+Filename_save1 = os.path.join(Folder1, path_save, image_name) 
 cv2.imwrite(Filename_save1,unwarp_img_bgr)
 
 

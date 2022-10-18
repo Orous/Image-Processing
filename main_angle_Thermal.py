@@ -10,9 +10,6 @@ import os
 """ Insert Inputs: 
     1- Location of the Image and Data"""  
     
-path = 'September 16'
-clock = '12'
-
 
 
 
@@ -26,7 +23,7 @@ path_save = 'Results'
 
 h_rct = 180 
 w_rct = 226
-Filename = os.path.join(Folder1, Folder2, path, clock, image_name)  
+Filename = os.path.join(Folder1, Folder2, image_name)  
 image_bgr = cv2.imread(Filename) 
 image = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
 
@@ -41,7 +38,7 @@ plt.show()
 
 
 """ 2- Load Temprature data from CSV file """
-Dataname = os.path.join(Folder1, Folder2, path, clock, data_name)  
+Dataname = os.path.join(Folder1, Folder2, data_name)  
 Temprature_data_F = pd.read_csv(Dataname, sep=',', header=0, encoding='utf-8').to_numpy() ## Fahrenheit
 Temprature_data = (Temprature_data_F - 32)/1.8 ## Convert to Centigrade
 
@@ -168,7 +165,7 @@ ax2.set_xticks([0, int((w_dst-1)/2), w_dst-1])
 ax2.set_yticks([0, int((h_dst-1)/2), h_dst-1]) 
 ax2.set_title('Unwarped Image')
 image_name2 = 'Ang Corr Thermal.png'
-onja = os.path.join(Folder1, path_save, path, clock, image_name2) 
+onja = os.path.join(Folder1, path_save, image_name2) 
 plt.savefig(onja,dpi=300)
 
 
@@ -176,11 +173,11 @@ plt.figure()
 plt.imshow(unwarp_cvs_rgb)
 plt.title('csv angle corrected')
 plt.colorbar()
-onja2 = os.path.join(Folder1, path_save, path, clock, image_name) 
+onja2 = os.path.join(Folder1, path_save, image_name) 
 plt.savefig(onja2,dpi=300)
 
 data_name2 = 'Thermal.txt'
-onja3 = os.path.join(Folder1, path_save, path, clock, data_name2) 
+onja3 = os.path.join(Folder1, path_save, data_name2) 
 np.savetxt(onja3, unwarp_cvs_rgb)
 
 
